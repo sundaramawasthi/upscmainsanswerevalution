@@ -19,6 +19,12 @@ exports.evaluateAnswer = functions.storage.object().onFinalize(async (object) =>
     const data = await pdfParse(fileBuffer);
     const text = data.text.toLowerCase();
 
+    const port = process.env.PORT || 3000;
+     app.listen(port, () => {
+     console.log(`Server running on port ${port}`);
+     });
+
+
     // Keywords for evaluation
     const keywords = [
       "economy",

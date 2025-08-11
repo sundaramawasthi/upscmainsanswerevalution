@@ -1,19 +1,18 @@
+// 📄 main.dart
 import 'dart:async';
 import 'dart:convert';
 import 'dart:typed_data';
-import 'package:flutter/foundation.dart'; // for kIsWeb
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:http/http.dart' as http;
 
 void main() {
-  // Catch Flutter framework-level errors
   FlutterError.onError = (FlutterErrorDetails details) {
     debugPrint('🔴 Flutter Error: ${details.exceptionAsString()}');
     debugPrintStack(stackTrace: details.stack);
   };
 
-  // Catch uncaught async/sync errors
   runZonedGuarded(() {
     runApp(const MyApp());
   }, (error, stack) {
@@ -28,7 +27,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'PDF Evaluator',
+      title: 'PDF Evaluator (French API)',
       theme: ThemeData(primarySwatch: Colors.blue),
       home: const UploadAndEvaluatePage(),
     );
@@ -45,13 +44,18 @@ class UploadAndEvaluatePage extends StatefulWidget {
 class _UploadAndEvaluatePageState extends State<UploadAndEvaluatePage> {
   String _status = 'No file uploaded yet';
 
+  // ✅ Switch between LOCAL & PRODUCTION
+  final String apiUrl = kDebugMode
+      ? "http://localhost:3000/api/french-evaluate" // Local dev server
+      : "https://your-deployed-french-api.netlify.app/api/french-evaluate"; // Deployed API
+
   Future<void> uploadPdfAndEvaluate() async {
     try {
       // Pick PDF file
       FilePickerResult? result = await FilePicker.platform.pickFiles(
         type: FileType.custom,
         allowedExtensions: ['pdf'],
-        withData: true, // Ensures file bytes are loaded for both web & mobile
+        withData: true,
       );
 
       if (result == null) {
@@ -67,21 +71,21 @@ class _UploadAndEvaluatePageState extends State<UploadAndEvaluatePage> {
         return;
       }
 
-      // Convert file to Base64
       String base64String = base64Encode(fileBytes);
 
-      setState(() => _status = "📤 Uploading $fileName...");
+      setState(() => _status = "📤 Uploading $fileName to French API...");
 
-      // Send POST request
-      var url = Uri.parse("http://localhost:3000/api/evaluate"); // Change to deployed API URL
       final response = await http.post(
-        url,
+        Uri.parse(apiUrl),
         headers: {'Content-Type': 'application/json'},
-        body: jsonEncode({'pdfBase64': base64String}),
+        body: jsonEncode({
+          'pdfBase64': base64String,
+          'language': 'fr', // Pass language flag for French
+        }),
       );
 
       if (response.statusCode == 200) {
-        setState(() => _status = "✅ Evaluation complete: ${response.body}");
+        setState(() => _status = "✅ French Evaluation: ${response.body}");
       } else {
         setState(() => _status =
         "❌ Server error: ${response.statusCode} - ${response.body}");
@@ -101,7 +105,7 @@ class _UploadAndEvaluatePageState extends State<UploadAndEvaluatePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('PDF Evaluator')),
+      appBar: AppBar(title: const Text('PDF Evaluator - French')),
       body: Center(
         child: Padding(
           padding: const EdgeInsets.all(16),
