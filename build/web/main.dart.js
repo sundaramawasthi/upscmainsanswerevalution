@@ -85887,7 +85887,7 @@ throw A.d(new A.OH(m,b,new A.vp(o,d,n)))},
 M2(a){this.aim(0,"expected "+a+".",0,this.c)}}
 A.JQ.prototype={
 M(a){var s=null
-return A.ky(A.eo(A.b([B.Te,B.NR,B.Tp,B.NT,A.azM(new A.a3v())],t.p),B.W,B.Y,B.af),B.z,B.k,s,s,s,B.E2,s)}}
+return A.ky(A.eo(A.b([B.Tf,B.NR,B.Tp,B.NT,A.azM(new A.a3v())],t.p),B.W,B.Y,B.af),B.z,B.k,s,s,s,B.E2,s)}}
 A.a3v.prototype={
 $2(a,b){var s,r=null,q=b.b
 if(q<600)s=1
@@ -85919,7 +85919,7 @@ A.a3s.prototype={
 $1(a){return this.a.h(0,"page")},
 $S:12}
 A.Ng.prototype={
-M(a){return A.Nt(A.ZF(null,B.Tc),null,B.Bs,null)}}
+M(a){return A.Nt(A.ZF(null,B.Td),null,B.Bs,null)}}
 A.O4.prototype={
 M(a){return A.Nt(A.ZF(null,B.Tn),null,B.Bt,null)}}
 A.Kb.prototype={
@@ -85954,25 +85954,25 @@ if(k==null){n.ag(new A.arH(n))
 s=1
 break}j=B.lt.gG2().dq(k)
 n.ag(new A.arI(n,l))
-i=A.j5("http://localhost:3000/api/evaluate")
+f=A.j5("https://upscmainsanswerevalution.onrender.com/evaluate")
 e=t.N
 d=A.ak(["Content-Type","application/json"],e,e)
 s=8
-return A.P(A.aTB(i,B.cY.T2(A.ak(["pdfBase64",j],e,e),null),d),$async$uU)
-case 8:h=a0
-if(h.b===200)n.ag(new A.arJ(n,h))
-else n.ag(new A.arK(n,h))
+return A.P(A.aTB(f,B.cY.T2(A.ak(["pdfBase64",j,"language","fr"],e,e),null),d),$async$uU)
+case 8:i=a0
+if(i.b===200)n.ag(new A.arJ(n,i))
+else n.ag(new A.arK(n,i))
 p=2
 s=6
 break
 case 4:p=3
 b=o.pop()
-g=A.ao(b)
-f=A.aD(b)
-A.atE().$1("\u274c Error in uploadPdfAndEvaluate: "+A.k(g))
-A.aDS(null,null,f)
-if(n.c!=null){n.ag(new A.arL(n,g))
-n.c.an(t.Pu).f.Je(A.aB9(null,null,null,null,null,B.V,null,A.dm("Error: "+A.k(g),null,null,null,null,null,null),null,B.mt,null,null,null,null,null,null,null,null,null))}s=6
+h=A.ao(b)
+g=A.aD(b)
+A.atE().$1("\u274c Error in uploadPdfAndEvaluate: "+A.k(h))
+A.aDS(null,null,g)
+if(n.c!=null){n.ag(new A.arL(n,h))
+n.c.an(t.Pu).f.Je(A.aB9(null,null,null,null,null,B.V,null,A.dm("Error: "+A.k(h),null,null,null,null,null,null),null,B.mt,null,null,null,null,null,null,null,null,null))}s=6
 break
 case 3:s=2
 break
@@ -85980,7 +85980,7 @@ case 6:case 1:return A.K(q,r)
 case 2:return A.J(o.at(-1),r)}})
 return A.L($async$uU,r)},
 M(a){var s=null
-return A.Nt(A.ZF(s,B.Tf),s,A.jp(new A.ck(B.mw,A.dm(this.d,s,s,s,s,B.cL,s),s),s,s),new A.t5(B.ji,this.gaog(),B.To,s))}}
+return A.Nt(A.ZF(s,B.Tc),s,A.jp(new A.ck(B.mw,A.dm(this.d,s,s,s,s,B.cL,s),s),s,s),new A.t5(B.ji,this.gaog(),B.To,s))}}
 A.arG.prototype={
 $0(){return this.a.d="No file selected."},
 $S:0}
@@ -85988,11 +85988,11 @@ A.arH.prototype={
 $0(){return this.a.d="Error: Could not read file."},
 $S:0}
 A.arI.prototype={
-$0(){return this.a.d="\ud83d\udce4 Uploading "+this.b+"..."},
+$0(){return this.a.d="\ud83d\udce4 Uploading "+this.b+" to API..."},
 $S:0}
 A.arJ.prototype={
 $0(){var s=this.b
-return this.a.d="\u2705 Evaluation complete: "+A.aDX(A.aCZ(s.e).c.a.h(0,"charset")).eV(0,s.w)},
+return this.a.d="\u2705 Evaluation Result: "+A.aDX(A.aCZ(s.e).c.a.h(0,"charset")).eV(0,s.w)},
 $S:0}
 A.arK.prototype={
 $0(){var s=this.b
@@ -86021,7 +86021,7 @@ s.f.lg(0,B.kv)
 s.r.lg(0,B.kv)}},
 M(a){var s=this,r=null,q=t.p,p=s.e,o=s.f,n=s.r
 p=A.c3(a,r,t.w).w.a.a<700?A.eo(A.b([s.KN(p,"Name"),B.br,s.KO(o,B.kz,"Email"),B.br,s.KP(n,"Message",6)],q),B.W,B.Y,B.af):A.uc(A.b([A.yk(A.eo(A.b([s.KN(p,"Name"),B.br,s.KO(o,B.kz,"Email")],q),B.W,B.Y,B.af),1),B.NP,A.yk(s.KP(n,"Message",6),1)],q),B.W,B.Y,B.af)
-return A.ky(A.eo(A.b([B.Td,B.br,new A.yH(p,B.i1,s.d),B.ko,A.jp(A.auH(!1,B.Kz,r,r,r,r,r,r,s.gadO(),r,r),r,r)],q),B.bv,B.Y,B.af),B.z,B.m3,r,r,r,B.iJ,r)},
+return A.ky(A.eo(A.b([B.Te,B.br,new A.yH(p,B.i1,s.d),B.ko,A.jp(A.auH(!1,B.Kz,r,r,r,r,r,r,s.gadO(),r,r),r,r)],q),B.bv,B.Y,B.af),B.z,B.m3,r,r,r,B.iJ,r)},
 Bu(a,b,c,d){var s=null
 return A.aNV(a,A.ava(s,new A.hY(4,A.io(12),B.i3),s,s,s,s,s,s,!0,s,s,s,s,s,s,B.k,!0,s,s,s,s,s,s,s,s,s,s,s,s,s,s,s,s,s,s,s,s,s,s,s,c,!0,!0,s,s,s,s,s,s,s,s,s,s,s,s,s),b,d,new A.akT(this,c))},
 KN(a,b){return this.Bu(a,B.kx,b,1)},
@@ -91689,10 +91689,10 @@ B.T6=new A.dN(B.QS,B.PW,B.QT,B.Rs,B.Pw,B.PF,B.Qf,B.Rf,B.Qt,B.S0,B.OZ,B.Pk,B.RW,B
 B.yH=new A.n(!0,null,null,null,null,null,32,B.b2,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null)
 B.T8=new A.cC("Frequently Asked Questions",null,B.yH,null,null,null,null,null,null)
 B.T9=new A.cC("UPSC Mains Hub",null,null,null,null,null,null,null,null)
-B.Tc=new A.cC("Reports",null,null,null,null,null,null,null,null)
-B.Td=new A.cC("Contact Us",null,B.yH,null,null,null,null,null,null)
-B.Te=new A.cC("Features",null,B.yJ,null,null,null,null,null,null)
-B.Tf=new A.cC("PDF Evaluator",null,null,null,null,null,null,null,null)
+B.Tc=new A.cC("PDF Evaluator - French",null,null,null,null,null,null,null,null)
+B.Td=new A.cC("Reports",null,null,null,null,null,null,null,null)
+B.Te=new A.cC("Contact Us",null,B.yH,null,null,null,null,null,null)
+B.Tf=new A.cC("Features",null,B.yJ,null,null,null,null,null,null)
 B.Tg=new A.cC("Upload Prelims Answer",null,null,null,null,null,null,null,null)
 B.S_=new A.n(!0,null,null,null,null,null,26,B.b2,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null)
 B.Th=new A.cC("Leaderboard",null,B.S_,null,null,null,null,null,null)
