@@ -1,4 +1,3 @@
-// 📄 main.dart
 import 'dart:async';
 import 'dart:convert';
 import 'dart:typed_data';
@@ -44,14 +43,13 @@ class UploadAndEvaluatePage extends StatefulWidget {
 class _UploadAndEvaluatePageState extends State<UploadAndEvaluatePage> {
   String _status = 'No file uploaded yet';
 
-  // ✅ Switch between LOCAL & PRODUCTION
+  // Use your deployed Render backend API URL here
   final String apiUrl = kDebugMode
-      ? "http://localhost:3000/api/french-evaluate" // Local dev server
-      : "https://your-deployed-french-api.netlify.app/api/french-evaluate"; // Deployed API
+      ? "http://localhost:3000/evaluate"
+      : "https://upscmainsanswerevalution.onrender.com/evaluate";
 
   Future<void> uploadPdfAndEvaluate() async {
     try {
-      // Pick PDF file
       FilePickerResult? result = await FilePicker.platform.pickFiles(
         type: FileType.custom,
         allowedExtensions: ['pdf'],
@@ -73,19 +71,19 @@ class _UploadAndEvaluatePageState extends State<UploadAndEvaluatePage> {
 
       String base64String = base64Encode(fileBytes);
 
-      setState(() => _status = "📤 Uploading $fileName to French API...");
+      setState(() => _status = "📤 Uploading $fileName to API...");
 
       final response = await http.post(
         Uri.parse(apiUrl),
         headers: {'Content-Type': 'application/json'},
         body: jsonEncode({
           'pdfBase64': base64String,
-          'language': 'fr', // Pass language flag for French
+          'language': 'fr', // or 'en' etc
         }),
       );
 
       if (response.statusCode == 200) {
-        setState(() => _status = "✅ French Evaluation: ${response.body}");
+        setState(() => _status = "✅ Evaluation Result: ${response.body}");
       } else {
         setState(() => _status =
         "❌ Server error: ${response.statusCode} - ${response.body}");
