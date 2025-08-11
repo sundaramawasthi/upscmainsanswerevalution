@@ -1,0 +1,9 @@
+{
+  "name": "upscmains-api",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "ISC",
+  "dependencies": {
+    "pdf-parse": "^1.1.1"
+  }
+}

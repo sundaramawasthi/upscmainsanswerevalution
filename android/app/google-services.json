@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1047947149820",
+    "project_id": "upscmainsweb",
+    "storage_bucket": "upscmainsweb.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1047947149820:android:a2ba310cf73bef16787279",
+        "android_client_info": {
+          "package_name": "com.example.upscmainsweb"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAZMr99cyj38sWMbMMpe3_Z5tUo6h40VS4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
