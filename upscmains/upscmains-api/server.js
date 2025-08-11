@@ -1,36 +1,42 @@
 // server.js
-const express = require('express');
-const bodyParser = require('body-parser');
-const cors = require('cors');
+const express = require("express");
+const bodyParser = require("body-parser");
+const cors = require("cors");
 
 const app = express();
-app.use(cors());
-app.use(bodyParser.json());
 
-// Simple health check
-app.get('/', (req, res) => {
-  res.json({ message: 'UPSC Mains API is running!' });
+// Enable CORS for all origins (adjust for your security needs)
+app.use(cors());
+
+// Increase payload size limit to 50mb
+app.use(bodyParser.json({ limit: "50mb" }));
+app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
+
+// Simple test route
+app.get("/", (req, res) => {
+  res.json({ message: "UPSC Mains API is running!" });
 });
 
-// Evaluate endpoint
-app.post('/evaluate', (req, res) => {
-  const { pdfBase64, language } = req.body;
+// Example AI evaluate endpoint (dummy response for now)
+app.post("/evaluate", (req, res) => {
+  const { pdfBase64, answer, language } = req.body;
 
-  // Dummy evaluation logic
-  let score = '80%';
-  let feedback = 'Your answer was evaluated successfully.';
+  // Log some info to verify
+  console.log(`Received evaluation request - size: ${pdfBase64?.length || 0} chars`);
 
-  if (language === 'fr') {
-    score = '85%';
-    feedback = 'Ceci est une réponse évaluée en français.';
+  if (!pdfBase64) {
+    return res.status(400).json({ error: "Missing pdfBase64 data" });
   }
 
-  // Return JSON response
+  // Dummy scoring logic - replace with real AI evaluation logic
+  let score = "80%";
+  let feedback = `Your answer was received. (Language: ${language || "not specified"})`;
+
   res.json({ score, feedback });
 });
 
-// Listen on environment port or 3000
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+// Start server
+const port = process.env.PORT || 3000;
+app.listen(port, () => {
+  console.log(`Server running on port ${port}`);
 });
